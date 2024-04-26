@@ -1,0 +1,12 @@
+{% extends 'base.html '%}
+
+{% block content %}
+
+    <h1> New Developer </h1>
+    <form method="post" action="{% url 'create_developer' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-success ml-2" type="submit">Save</button>
+    </form>>
+
+{% endblock %}

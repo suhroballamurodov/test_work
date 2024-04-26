@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table style="border-collapse: collapse; color: black;">
+    <thead>
+        <th>Project name</th>
+        <th>Contact</th>
+        <th>Project info</th>
+        <th>Price</th>
+        <th>Created time</th>
+        <th>Finished date</th>
+        <th>Status</th>
+        <th>Edit</th>
+    </thead>
+    <tbody>
+{% for project in projects%}
+        <tr>
+            <td>{{project.name}}</td>
+            <td>{{project.contact}}</td>
+            <td>{{project.project_info}}</td>
+            <td>{{project.price}} $</td>
+            <td>{{project.create_time}}</td>
+            <td>{{project.finished_date}}</td>
+            <td>{{project.status}}</td>
+            <td>
+                <a type="button" class="btn btn-danger" href="/project_update/{{ project.id }}">Update</a>
+                <a type="button" class="btn btn-danger" href="/project_delete/{{ project.id }}">Delete</a>
+                <a type="button" class="btn btn-danger" href="/project_view/{{ project.id }}">View</a>
+            </td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<a type="button" class="btn btn-primary btn-lg" href="{% url 'create_developer' %}">Create Developers</a>
+{% endblock %}

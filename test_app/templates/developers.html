@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table style="border-collapse: collapse; color: black;">
+    <thead>
+        <th>Developer name</th>
+        <th>Contact</th>
+        <th>Developer info</th>
+        <th>Experience year</th>
+        <th>Finished work</th>
+        <th>Edit</th>
+    </thead>
+    <tbody>
+{% for developer in developers%}
+        <tr>
+            <a type="button" class="btn btn-danger" href="/developer_view/{{ developer.id }}"></a> <td>{{developer.name}}</td>
+            <td>{{developer.contact}}</td>
+            <td>{{developer.my_info}}</td>
+            <td>{{developer.experience_year}} year</td>
+            <td>{{developer.finished_work}}</td>
+            <td>
+                <a type="button" class="btn btn-danger" href="/developer_update/{{ developer.id }}">Update</a>
+                <a type="button" class="btn btn-danger" href="/developer_delete/{{ developer.id }}">Delete</a>
+                <a type="button" class="btn btn-danger" href="/developer_view/{{ developer.id }}">View</a>
+            </td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<a type="button" class="btn btn-primary btn-lg" href="{% url 'create_developer' %}">Create Developers</a>
+{% endblock %}

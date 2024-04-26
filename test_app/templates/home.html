@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <style>
+     body {
+      color: rgb(0, 0, 0);
+      text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello, {{ user.username|default:'Guest' }}</h1>
+    <p> Welcome to the Our site</p>
+    <div>
+      {% if user.is_authenticated %}
+      <button type="button" class="btn btn-primary btn-lg"><a href="{% url 'project' %}"> Clients </a></button>
+      <button type="button" class="btn btn-secondary btn-lg"><a href="{% url 'developer' %}"> Developer </a></button>
+      <p><a href="{% url 'logout' %}">Logout</a></p>
+      {% else %}
+      <p>You aren't Admin </p>
+        <button type="button" class="btn btn-primary btn-lg"><a href="{% url 'login' %}">Login</a></button>
+        <button type="button" class="btn btn-secondary btn-lg"><a href="{% url 'signup' %}">Signup</a></button>
+      {% endif %}
+  </div>
+  
+  </body>
+</html>
